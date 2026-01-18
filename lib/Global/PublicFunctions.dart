@@ -1,5 +1,7 @@
-import 'package:flutter/material.dart';
+import 'dart:io';
 
+import 'package:flutter/material.dart';
+import 'package:device_info_plus/device_info_plus.dart';
 
 
 
@@ -11,6 +13,20 @@ String? validateMobileNumber(String? value, {bool isRequired = true}) {
     return "Enter a valid 10-digit mobile number";
   }
   return null; // No error
+}
+
+
+Future<String> getDeviceId() async {
+  final deviceInfo = DeviceInfoPlugin();
+  if (Platform.isAndroid) {
+    final androidInfo = await deviceInfo.androidInfo;
+    //return androidInfo.id ?? androidInfo.androidId!;
+    return androidInfo.id;
+  } else if (Platform.isIOS) {
+    final iosInfo = await deviceInfo.iosInfo;
+    return iosInfo.identifierForVendor!;
+  }
+  return 'unknown-device';
 }
 
 

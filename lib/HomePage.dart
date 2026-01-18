@@ -1,10 +1,13 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:logiclab_tutorials/Global/PublicFunctions.dart';
+import 'package:logiclab_tutorials/Tutorials/PDFIndex.dart';
 import 'package:logiclab_tutorials/Tutorials/Paginationbutton.dart';
 import 'package:logiclab_tutorials/Tutorials/Paginationscroll.dart';
 import 'package:logiclab_tutorials/Tutorials/ReportPage.dart';
 import 'package:logiclab_tutorials/Tutorials/Spinkit.dart';
+import 'package:logiclab_tutorials/Tutorials/VideoplayAndroidIos.dart';
 import 'package:logiclab_tutorials/Tutorials/mobiletext.dart';
 
 class HomePage extends StatefulWidget {
@@ -141,24 +144,48 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
 
-
-
-
-
-
               Container(
                 width: double.infinity,
                 padding: const EdgeInsets.all(10),
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () async {
+                    // Navigator.push(context,MaterialPageRoute(builder: (context) => VideoPlayerScreen()),);
+
+                    String deviceId = await getDeviceId();
+
+                    print("Device ID " + deviceId);
+
+
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blueAccent,
                     foregroundColor: Colors.white,
                     elevation: 12.0,
                   ),
-                  child: const Text('Elevated Button'),
+                  child: const Text('Device Id'),
                 ),
               ),
+
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.all(10),
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(context,MaterialPageRoute(builder: (context) => PDFIndex()),);
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blueAccent,
+                    foregroundColor: Colors.white,
+                    elevation: 12.0,
+                  ),
+                  child: const Text('PDF VIew'),
+                ),
+              ),
+
+
+
+
+
 
 
               Container(
